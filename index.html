@@ -432,38 +432,149 @@ Computer hardware and software would be in charge of a self-driving car. To take
   </div>
  </div>
 
+<!--header-->
+
+ <header class="w3-container w3-yellow w3-center" style="padding:50px 8px">
+   <h1 class="w3-xlarge w3-jumbo">Project Idea</h1>
+ </header>
+
+<!--project idea-->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+
+ <h2 class="w3-padding-64 w3-center">Overview
+ </h2>
+
+ <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+   Due to a lack of trash management and regulation by the government, the amount of rubbish produced daily in the world has increased, resulting in unappealing images of overflowing landfills. Using an Arduino microcontroller, this project shows the building of a low-cost recycle bin that automatically sorts different types of recyclable material. The goal of this project is to build a recycling bin prototype with a sensing mechanism that can autonomously sort recyclable garbage (such as metal, paper, and plastic) and assign it to appropriate bin partitions based on its nature.
+ <br><br>
+The construction of the bin is divided into two parts 1. Sensing 2. Mechanism. The sensing part detects types of waste material such as metal, paper and plastic. The metal-based waste is detected using an inductive proximity sensor; while, for paper and plastic-based waste, a light emitting diode (LED) and a light dependent resistor (LDR) are utilised. The mechanical part assembled a servo motor together with the microcontroller to sort the waste type accordingly.
+ <br><br>
+We will also investigate similar products available in the market and the pathways to selling this and allowing for profitability or marketability of the app which can be explored alongside its development.
+
+
+ </h5>
+
+ <h2 class="w3-padding-64 w3-center">Motivation
+ </h2>
+
+ <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+   There are some countries in the world with low literacy rate and very little knowledge about waste management. Despite having different bins to sort waste, they just put them into the bin without knowing even if they can put that thing in that bin. In those cases a home base Arduino waste sorter would help a lot of people. This would also increase the rate of recycling and reuse of recyclable material. This would also definitely decrease the amount of decomposable wasting in the recyclable open areas. Because of that it would also decrease the amount of disease spread due to bees sitting on waste.
+
+ </h5>
+ <img class="w3-padding-32" src="project/motivation.JPG" alt="shannon image" width="550" height="450">
+
+ <h2 class="w3-padding-64 w3-center"> Description
+ </h2>
+
+ <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+
+
+1. 	Development of Sensing part:
+  <br><br>
+The detecting circuit is built utilising an ultrasonic sensor, an inductive proximity sensor, and an LDR sensor, as illustrated in Fig. 1. Each sensor performs a unique function in order to distinguish between the many types of recyclable garbage. The ultrasonic sensor detects the distance of garbage, the inductive proximity sensor detects the presence of metal, and the LDR sensor detects the difference between paper and plastic.
+  <br><br>
+The ultrasonic sensor is the system's first sensor for detecting the presence of any recycling waste within the sensing component. When an ultrasonic sensor identifies the presence of an object, another sensor is activated, and the material detection process begins. An ultrasonic sensor's detecting distance can be adjusted from zero to 24cm. The inductive proximity sensor then begins to detect the presence of aluminium.
+  <br><br>
+If the inductive proximity sensor detects no presence of aluminium (i.e., the detection value of inductive proximity is less than 200T), the LDR will activate and determine the degree of light intensity collected to distinguish between paper and plastic. In addition, one LED is attached in the opposite direction of the LDR to ensure that the first light captured by the LDR is stable. Thus, if the light intensity captured by LDR is less than 500lx, it indicates that a paper has been tossed into the recycle bin, whereas the light intensity collected for a plastic bottle must be greater than 500lx. The waste classification measurements are based on the table below.
+
+
+
+ </h5>
+ <img class="w3-padding-32" src="project/table1.jpg" alt="shannon image" width="900" height="400">
+
+ <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+
+
+   2. 	Development of mechanical part:
+      <br><br>
+   The mechanical part of the recycling bin is the mechanism that rotates the waste separation part and drops the garbage into the correct partition of the bin. Two servo motors and three sorting holes with compartments for plastic bottles, cans, and papers make up this section. The servo motors that were used in this project, as well as their positions, were designed as servo1 for lower/rotating part and servo2 for upper/ dropping part.
+      <br><br>
+   In order to dump the garbage into the storage, the servo2 is coupled to the detecting component, which is the upper part of the bin. After the type of material is identified by the sensor, it is inclined by around 70 degrees. The servo1 is used to move the sorting components, which are made of light materials like plywood. This is to ensure that the servo1 can hold the load while the motor rotates and operates appropriately. It's connected to the three sorting slots. Aluminium cans go into the first sorting aperture, papers go into the second, and plastic bottles go into the third sorting opening. The rotation of servo1 is based on the angle set in the Table below,
+
+
+
+ </h5>
+ <img class="w3-padding-32" src="project/table2.jpg" alt="shannon image" width="1000" height="400">
+
+
+ <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+   Servo1's angle of rotation is established based on how the mechanical part moved and synchronised with servo2 to see if servo2's rotation can rotate into the sorting opening. As a result, the trial-and-error method is utilised to establish the angle for servo1, ensuring that the recycle material is successfully dumped. Because this project focuses on three different materials, the recyclable garbage is classified using three different angles before being discarded. The servo1 moves to 5° when the LDR sensor detects high light intensity (above 500lx), indicating that the plastic bottle has been detected. However, if the LDR sensor detects low light intensity (below 500lx), the servo1 will spin to 50°, indicating that paper waste is present. Meanwhile, if the inductive proximity sensor detects metal, the servo1 rotates to 95 degrees.
+    <br><br>
+   How will it function all together?
+    <br><br>
+   The ultrasonic sensor will first detect the waste that is thrown by the user. The ultrasonic sensor detects the presence of an object from 24cm. After the ultrasonic detects the existence of an object, the inductive proximity sensor activates and determines whether there is aluminium present. If aluminium is recognised, the servo1 rotates to 95 degrees, and the servo2 is tilted to 70 degrees.
+    <br><br>
+   However, if the inductive proximity sensor detects no metal, the LDR sensor will begin to function. By detecting the light intensity, the LDR sensor determines whether the presence object is made of paper or plastic. If plastic is identified, the servo1 rotates to 95 degrees while the servo2 rotates to 70 degrees, dropping the plastic into the plastic compartment. When paper is recognised, the servo1 rotates to 50 degrees, then the servo2 rotates to 70 degrees to drop the paper into its compartment. Following that, both servos will return to their original state.
+
+
+ </h5>
+
+
+  <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+
+Plan to see that in market:
+  <br><br>
+To make it a successful product we first need to target the target audience for i-Bin, a smart trash bin, are Hospitals, Clinics, Quarantine Facilities and Schools (Offices) that produce waste and struggle with garbage management. Smart trash bins help to solve the problems related to the garbage management and to prevent the spread of novel coronavirus or Covid-19 through waste generated at vulnerable contagion points such as hospitals, clinics, public bins, quarantine hotspots and especially our school.
+  <br><br>
+There are few similar products in the market already like AI Recycling robots, Pneumatic waste pipelines but they cost a lot of money so having a small waste sorter in houses will be very cost effective and help towards a better world.
+
+  </h5>
+
+
+
+
+
+
+
+  <h2 class="w3-padding-64 w3-center">Tools
+  </h2>
+
+  <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+We are using Arduino as a hardware here. Arduino is an open-source gadgets stage in view of simple-to-utilise equipment and programming. Arduino sheets can understand inputs - light on a sensor, a finger on a button, or a Twitter message - and transform it into a result - initiating an engine, turning on a LED, distributing something on the web. You can guide your board by sending a bunch of guidelines to the microcontroller on the board. To do as such you utilise the Arduino programming language, and the Arduino Software (IDE), considering Processing. Along with that, different sensors like ultrasonic sensor, proximity sensor and LDR sensors are used along with 2 servo motors.
+
+
+  </h5>
+
+
+  <h2 class="w3-padding-64 w3-center">Skills
+  </h2>
+
+  <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+    The microcontroller's programming element is essential to tell the sensors and mechanical parts to accomplish a specific task. Only basic C++ programming is utilised in this project. It's used to specify which pins should be utilised to link the input and output components. The library of the components that were used, on the other hand, must be included. The C++ standard input and output functions are included in the library. Furthermore, the method is based solely on the 'if else' phrase. This statement is used to decide, and the next block of code will be run based on the decision. The servo, for example, is rotated depending on two different signals received from two different sensors.
+
+
+  </h5>
+
+
+    <h2 class="w3-padding-64 w3-center">Outcome
+    </h2>
+
+    <h5 class="w3-row-padding w3-light-grey w3-padding-32 w3-container w3-center">
+The proposed concept and prototype have the potential to be used in the future to reduce the cost of solid waste disposal. An upgraded prototype of a recycle bin with IoT characteristics to update and notify end users on waste status ('full' or 'not full') via mobile application (Apps) will improve waste collection management efficacy. In the future, a "reward point" system could be implemented to raise recycling awareness. As a result, a comprehensive recycle bin system can include a smart card system to redeem money when the points reach particular amounts.
+
+
+
+    </h5>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
 <!--biblography-->
-<h1>Biblography</h1>
 
 
-<h6>Rmit.edu.au. 2022. Facts, figures and rankings. [online] Available at: https://www.rmit.edu.au/about/facts-figures [Accessed 25 March 2022].</h6>
-
-<h6>SEEK. 2022. [online] Available at: https://www.seek.com.au/job/56405832?cid=ios-share [Accessed 26 March 2022].</h6>
-
-<h6>16personalities.com. 2022. Welcome! | 16Personalities. [online] Available at: https://www.16personalities.com/profile [Accessed 27 March 2022].</h6>
-
-<h6>Truity. 2022. The Big Five Personality Test. [online] Available at: https://www.truity.com/test-results/bigfive/17315/29372866 [Accessed 27 March 2022].</h6>
-
-<h6>Educationplanner.org. 2022. EducationPlanner.org. [online] Available at: http://www.educationplanner.org [Accessed 27 March 2022]</h6>
-
-<h6>Un.org. 2022. [online] Available at: https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/files/documents/2020/Sep/un_pop_2020_pf_ageing_10_key_messages.pdf [Accessed 27 March 2022].</h6>
-
-
-<h6>Edureka. 2022. Top 12 Artificial Intelligence Tools and Frameworks | Edureka. [online] Available at: https://www.edureka.co/blog/top-12-artificial-intelligence-tools [Accessed 27 March 2022].</h6>
-
-
-<h6>The Conversation. 2022. Information technology News, Research and Analysis - The Conversation. [online] Available at: https://theconversation.com/us/topics/information-technology-3215 [Accessed 27 March 2022].</h6>
-
-<h6>IoT World Today. 2022. Q and A: What Does the Future Hold for Smart Home Technology?. [online] Available at: https://www.iotworldtoday.com/2019/11/15/qa-what-does-the-future-hold-for-smart-home-technology/ [Accessed 27 March 2022].</h6>
-
-<h6>En.wikipedia.org. 2022. RMIT University Vietnam - Wikipedia. [online] Available at: https://en.wikipedia.org/wiki/RMIT_University_Vietnam [Accessed 27 March 2022].</h6>
-
-<h6>W3schools.com. 2022. W3.CSS Templates. [online] Available at: https://www.w3schools.com/w3css/w3css_templates.asp> [Accessed 27 March 2022].</h6>
-
-
-<h6>GitHub. 2022. tanishosr - Repositories. [online] Available at: https://github.com/tanishosr?tab=repositories [Accessed 27 March 2022].
-
-</h6>
 
 
   </div>
